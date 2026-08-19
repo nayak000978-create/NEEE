@@ -163,3 +163,14 @@
     font-size: 0.9375rem;
   }
 }
+
+@keyframes neee-news-in {
+  from {
+    opacity: 0;
+    transform: translateX(var(--neee-from, 40px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
