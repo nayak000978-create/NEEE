@@ -43,11 +43,13 @@ export function NewsCarousel({ items = DEFAULT_NEWS }: { items?: string[] }) {
         }
       }}
       onTouchStart={(e) => {
-        touchX.current = e.touches[0].clientX;
+        touchX.current = e.touches[0]?.clientX ?? null;
       }}
       onTouchEnd={(e) => {
         if (touchX.current === null) return;
-        const dx = e.changedTouches[0].clientX - touchX.current;
+        const end = e.changedTouches[0]?.clientX;
+        if (end === undefined) return;
+        const dx = end - touchX.current;
         if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
         touchX.current = null;
       }}
